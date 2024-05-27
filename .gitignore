@@ -93,4 +93,5 @@ fabric.properties
 
 .idea/
 .env 
-/data/  
+/data/
+/logs/** 
