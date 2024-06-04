@@ -22,12 +22,15 @@ def handle_filemanager_error(func):
         try:
             if "write" in func.__name__:
                 date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-                if dest_folder := args[0].pop(0).get("name"):
-                    directory = f"data/{dest_folder}/"
-                    os.makedirs(directory, exist_ok=True)
-                    dest_file = f"{directory}{date}.json"
-                    return func(dest_file, *args, **kwargs)
-                raise Exception("Wrong request data format.")
+                category = args[0].pop(0).get("operation")
+                print(category)
+                dest_folder = args[0].pop(0).get("name")
+                print(dest_folder)
+                directory = f"/opt/airflow/dags/data/{category}/{dest_folder}/"
+                print(directory)
+                os.makedirs(directory, exist_ok=True)
+                dest_file = f"{directory}{date}.json"
+                return func(dest_file, *args, **kwargs)
             else:
                 if os.path.exists(args[0]):
                     return func(*args)
@@ -38,7 +41,7 @@ def handle_filemanager_error(func):
 
 
 @handle_filemanager_error
-def write_json(dest_file: str, data: dict) -> None:
+def write_json(dest_file: str, data: dict) -> None | str:
     """
     Write data to a JSON file.
 

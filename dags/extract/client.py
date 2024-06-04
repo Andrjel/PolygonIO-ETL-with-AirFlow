@@ -1,4 +1,3 @@
-import dataclasses
 import requests
 
 
@@ -12,8 +11,10 @@ def fetch_data_decorator(func):
     """
     def wrapper(self, *args):
         result = []
+        result.append({"operation": "E"})
         result.append({"name": func.__name__})
         response = func(self, *args)
+        result.extend(response.get("results", {}))
         if response.get("next_url", None):
             result.extend(self.fetch_data(response.get("next_url")))
         return result
@@ -21,13 +22,13 @@ def fetch_data_decorator(func):
     return wrapper
 
 
-@dataclasses.dataclass
 class ClientSync:
     """
     Polygon.io API client
     """
-    _api_key = 'BH1TqYfUvL6xV1YWnpVdxiXYYZsikHM8'
-    _endpoint = 'https://api.polygon.io'
+    def __init__(self, api_key, endpoint) -> None:
+        self._api_key = api_key
+        self._endpoint = endpoint
 
     @fetch_data_decorator
     def get_all_tickers(self, ticker=None, market="stocks", active=True, limit=1000, sort="ticker", order="asc"):
@@ -128,3 +129,7 @@ class ClientSync:
             result.extend(self.fetch_data(response.json().get("next_url")))
         return result
     
+if __name__ == "__main__":
+    e = ClientSync("BH1TqYfUvL6xV1YWnpVdxiXYYZsikHM8", "https://api.polygon.io")
+    raw_data = e.get_all_ticker_types()
+    print(raw_data)
