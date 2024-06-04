@@ -1,5 +1,4 @@
 import dataclasses
-import os
 import requests
 
 
@@ -15,10 +14,6 @@ def fetch_data_decorator(func):
         result = []
         result.append({"name": func.__name__})
         response = func(self, *args)
-        if response.get("results", None):
-            result.extend(response.get("results", []))
-        else:
-            raise Exception(f"Limit reached. {func.__name__}")     
         if response.get("next_url", None):
             result.extend(self.fetch_data(response.get("next_url")))
         return result
@@ -132,6 +127,4 @@ class ClientSync:
         if response.json().get("next_url", None):
             result.extend(self.fetch_data(response.json().get("next_url")))
         return result
-    
-    
     

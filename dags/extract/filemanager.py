@@ -53,6 +53,7 @@ def write_json(dest_file: str, data: dict) -> None:
         return
     with open(dest_file, "w") as file:
         file.write(json.dumps(data, indent=4, sort_keys=True))
+    return dest_file
 
 
 @handle_filemanager_error
