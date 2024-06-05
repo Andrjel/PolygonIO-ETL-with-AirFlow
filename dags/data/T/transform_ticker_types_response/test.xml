@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+  <row>
+    <index>0</index>
+    <asset_class>stocks</asset_class>
+    <code>CS</code>
+    <description>Common Stock</description>
+  </row>
+  <row>
+    <index>1</index>
+    <asset_class>stocks</asset_class>
+    <code>PFD</code>
+    <description>Preferred Stock</description>
+  </row>
+  <row>
+    <index>2</index>
+    <asset_class>stocks</asset_class>
+    <code>WARRANT</code>
+    <description>Warrant</description>
+  </row>
+  <row>
+    <index>3</index>
+    <asset_class>stocks</asset_class>
+    <code>RIGHT</code>
+    <description>Rights</description>
+  </row>
+  <row>
+    <index>4</index>
+    <asset_class>stocks</asset_class>
+    <code>BOND</code>
+    <description>Corporate Bond</description>
+  </row>
+  <row>
+    <index>5</index>
+    <asset_class>stocks</asset_class>
+    <code>ETF</code>
+    <description>Exchange Traded Fund</description>
+  </row>
+  <row>
+    <index>6</index>
+    <asset_class>stocks</asset_class>
+    <code>ETN</code>
+    <description>Exchange Traded Note</description>
+  </row>
+  <row>
+    <index>7</index>
+    <asset_class>stocks</asset_class>
+    <code>ETV</code>
+    <description>Exchange Traded Vehicle</description>
+  </row>
+  <row>
+    <index>8</index>
+    <asset_class>stocks</asset_class>
+    <code>SP</code>
+    <description>Structured Product</description>
+  </row>
+  <row>
+    <index>9</index>
+    <asset_class>stocks</asset_class>
+    <code>ADRC</code>
+    <description>American Depository Receipt Common</description>
+  </row>
+  <row>
+    <index>10</index>
+    <asset_class>stocks</asset_class>
+    <code>ADRP</code>
+    <description>American Depository Receipt Preferred</description>
+  </row>
+  <row>
+    <index>11</index>
+    <asset_class>stocks</asset_class>
+    <code>ADRW</code>
+    <description>American Depository Receipt Warrants</description>
+  </row>
+  <row>
+    <index>12</index>
+    <asset_class>stocks</asset_class>
+    <code>ADRR</code>
+    <description>American Depository Receipt Rights</description>
+  </row>
+  <row>
+    <index>13</index>
+    <asset_class>stocks</asset_class>
+    <code>FUND</code>
+    <description>Fund</description>
+  </row>
+  <row>
+    <index>14</index>
+    <asset_class>stocks</asset_class>
+    <code>BASKET</code>
+    <description>Basket</description>
+  </row>
+  <row>
+    <index>15</index>
+    <asset_class>stocks</asset_class>
+    <code>UNIT</code>
+    <description>Unit</description>
+  </row>
+  <row>
+    <index>16</index>
+    <asset_class>stocks</asset_class>
+    <code>LT</code>
+    <description>Liquidating Trust</description>
+  </row>
+  <row>
+    <index>17</index>
+    <asset_class>stocks</asset_class>
+    <code>OS</code>
+    <description>Ordinary Shares</description>
+  </row>
+  <row>
+    <index>18</index>
+    <asset_class>stocks</asset_class>
+    <code>GDR</code>
+    <description>Global Depository Receipts</description>
+  </row>
+  <row>
+    <index>19</index>
+    <asset_class>stocks</asset_class>
+    <code>OTHER</code>
+    <description>Other Security Type</description>
+  </row>
+  <row>
+    <index>20</index>
+    <asset_class>stocks</asset_class>
+    <code>NYRS</code>
+    <description>New York Registry Shares</description>
+  </row>
+  <row>
+    <index>21</index>
+    <asset_class>stocks</asset_class>
+    <code>AGEN</code>
+    <description>Agency Bond</description>
+  </row>
+  <row>
+    <index>22</index>
+    <asset_class>stocks</asset_class>
+    <code>EQLK</code>
+    <description>Equity Linked Bond</description>
+  </row>
+  <row>
+    <index>23</index>
+    <asset_class>stocks</asset_class>
+    <code>ETS</code>
+    <description>Single-security ETF</description>
+  </row>
+</data>
