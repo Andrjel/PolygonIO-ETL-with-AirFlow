@@ -23,30 +23,35 @@ def extract_ticker_types_task(**kwargs):
 def transform_ticker_types_task(ti):
     import extract
     import transform
+    import os
     t = transform.Transformers()
     raw_json_file = ti.xcom_pull(task_ids='extract_ticker_types')
     raw_data = extract.read_json(raw_json_file)
     transformed_data = t.transform_ticker_types_response(raw_data)
-    directory = f"/opt/airflow/dags/data/T/transform_ticker_types_response/test.xml"
-    transformed_data.to_xml(directory)
-    return directory
+    date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    directory = f"/opt/airflow/dags/data/T/{t.transform_ticker_types_response.__name__}"
+    os.makedirs(directory, exist_ok=True)
+    dest_path = f"{directory}/{date}.xml"
+    transformed_data.to_xml(dest_path, index=False)
+    return dest_path
 
 
 def load_ticker_types(ti):
-    import extract
-    import load
     import pandas as pd
     data_file_path = ti.xcom_pull(task_ids='transform_ticker_types')
     data = pd.read_xml(data_file_path)
     
     mssql_hook = MsSqlHook(mssql_conn_id="mssql")
-    print(mssql_hook.default_conn_name)
     
-    return data.describe()
+    table_name = "StockTypes"
+    rows = list(data.itertuples(index=False, name=None))
+    target_fields = ["AssetClass", "Code", "Description"]
     
+    mssql_hook.insert_rows(table=table_name, rows=rows, target_fields=target_fields, duplicate_key_handling="replace")
+
 
 with DAG (
-    dag_id='dag_polygon_ticker_types_v32',
+    dag_id='dag_polygon_ticker_types_v38',
     description='fetch all ticker types from polygon.io',
     default_args=default_args,
     start_date=datetime(2024,6,3),

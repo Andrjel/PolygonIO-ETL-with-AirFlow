@@ -23,14 +23,11 @@ def handle_filemanager_error(func):
             if "write" in func.__name__:
                 date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
                 category = args[0].pop(0).get("operation")
-                print(category)
                 dest_folder = args[0].pop(0).get("name")
-                print(dest_folder)
                 directory = f"/opt/airflow/dags/data/{category}/{dest_folder}/"
-                print(directory)
                 os.makedirs(directory, exist_ok=True)
                 dest_file = f"{directory}{date}.json"
-                return func(dest_file, *args, **kwargs)
+                return func(dest_file, *args)
             else:
                 if os.path.exists(args[0]):
                     return func(*args)
